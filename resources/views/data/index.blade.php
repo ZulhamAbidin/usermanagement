@@ -187,14 +187,14 @@
                             <label for="name" class="col-sm-2 control-label">nama</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Enter Name"
-                                    value="NAMA" required>
+                                    required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">nik</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="nik" name="nik" placeholder="Enter nik" value="nik"
+                                <input type="text" class="form-control" id="nik" name="nik" placeholder="Enter nik" 
                                     required>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">alamat</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Enter alamat" value="alamat"
+                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Enter alamat" 
                                     required>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">jenis</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="jenis" name="jenis" placeholder="Enter jenis" value="jenis"
+                                <input type="text" class="form-control" id="jenis" name="jenis" placeholder="Enter jenis" 
                                     required>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">pendidikan</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="pendidikan" name="pendidikan" placeholder="Enter pendidikan" value="pendidikan"
+                                <input type="text" class="form-control" id="pendidikan" name="pendidikan" placeholder="Enter pendidikan" 
                                     required>
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">jurusan</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="jurusan" name="jurusan" placeholder="Enter jurusan" value="jurusan"
+                                <input type="text" class="form-control" id="jurusan" name="jurusan" placeholder="Enter jurusan"
                                     required>
                             </div>
                         </div>
@@ -234,7 +234,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">hari</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="hari" name="hari" placeholder="Enter hari" value="hari"
+                                <input type="text" class="form-control" id="hari" name="hari" placeholder="Enter hari" 
                                     required>
                             </div>
                         </div>
