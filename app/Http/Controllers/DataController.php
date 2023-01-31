@@ -24,9 +24,9 @@ class DataController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->nik.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
    
-                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->nik.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
     
                             return $btn;
                     })
@@ -34,18 +34,19 @@ class DataController extends Controller
                     ->make(true);
         }
         
-        return view('/data/index');
+        return view('/data.index');
     }
        
    
     public function store(Request $request)
     {
+
         Data::updateOrCreate([
-                    'id' => $request->id
+                    /* 'id' => $request->id */
+                    'nik' => $request->nik, 
                 ],
                 [
                     'nama' => $request->nama,
-                    'nik' => $request->nik, 
                     'alamat' => $request->alamat, 
                     'jenis' => $request->jenis,  
                     'pendidikan' => $request->pendidikan, 
@@ -61,9 +62,9 @@ class DataController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nik)
     {
-        $product = Data::find($id);
+        $product = Data::find($nik);
         return response()->json($product);
     }
     
@@ -73,9 +74,9 @@ class DataController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($nik)
     {
-        Data::find($id)->delete();
+        Data::find($nik)->delete();
       
         return response()->json(['success'=>'Product deleted successfully.']);
     }

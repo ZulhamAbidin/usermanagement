@@ -23,10 +23,10 @@ return new class extends Migration
             public function up()
         {
             Schema::create('data', function (Blueprint $table) {
-                $table->id();
+               /*  $table->id(); */
+                $table->uuid('nik')->primary();
                 $table->string('nama');
                 $table->string('alamat');
-                $table->string('nik');
                 $table->string('jenis');
                 $table->string('pendidikan');
                 $table->string('jurusan');
