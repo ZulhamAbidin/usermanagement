@@ -1,102 +1,82 @@
 <?php
+           
 namespace App\Http\Controllers;
-use App\Models\data;
+            
+use App\Models\Data;
 use Illuminate\Http\Request;
-// use Yajra\DataTables\Facades\DataTables;
-use Datatables;
+use DataTables;
+          
 class DataController extends Controller
 {
-/**
-* Display a listing of the resource.
-*
-* @return \Illuminate\Http\Response
-*/
-public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
     {
-        /* if(!auth()->check() || auth()->user()->name !== 'astriayuningsih') {
-            abort(403);
-        } */
+     
+        if ($request->ajax()) {
+  
+            $data = Data::latest()->get();
+  
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+   
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+   
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
+    
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
         
-        if(request()->ajax()) {
-        return datatables()->of(data::select('*'))
-        ->addColumn('action', 'data.action')
-        ->rawColumns(['action'])
-        ->addIndexColumn()
-        ->make(true); }
-        return view('data.index');
+        return view('/data/index');
     }
-
-
-public function create()
+       
+   
+    public function store(Request $request)
     {
-         return view('data.create');
+        Data::updateOrCreate([
+                    'id' => $request->id
+                ],
+                [
+                    'nama' => $request->nama,
+                    'nik' => $request->nik, 
+                    'alamat' => $request->alamat, 
+                    'jenis' => $request->jenis,  
+                    'pendidikan' => $request->pendidikan, 
+                    'jurusan' => $request->jurusan, 
+                    'hari' => $request->hari
+                ]);        
+     
+        return response()->json(['success'=>'Product saved successfully.']);
     }
-
-
-public function store(Request $request)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        $request->validate([
-        'nama' => 'required',
-        'alamat' => 'required',
-        'nik' => 'required',
-        'jenis' => 'required',
-        'pendidikan' => 'required',
-        'jurusan' => 'required',
-        'hari' => 'required'
-    ]);
-        $data = new Data;
-        $data->nama = $request->nama;
-        $data->alamat = $request->alamat;
-        $data->nik = $request->nik;
-        $data->jenis = $request->jenis;
-        $data->pendidikan = $request->pendidikan;
-        $data->jurusan = $request->jurusan;
-        $data->hari = $request->hari;
-        $data->save();
-        return redirect()->route('data.index')
-        ->with('success','Company has been created successfully.');
-        }
-
-public function show(Data $company)
-    {
-      return view('data.show',compact('company'));
-    } 
-
-
-public function edit(Data $company)
-    {
-        return view('data.edit',compact('company'));
+        $product = Data::find($id);
+        return response()->json($product);
     }
-
-
-public function update(Request $request, $id)
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $request->validate([
-        'nama' => 'required',
-        'alamat' => 'required',
-        'nik' => 'required',
-        'jenis' => 'required',
-        'pendidikan' => 'required',
-        'jurusan' => 'required',
-        'hari' => 'required'
-        ]);
-        $data = Data::find($id);
-        $data->nama = $request->nama;
-        $data->alamat = $request->alamat;
-        $data->nik = $request->nik;
-        $data->jenis = $request->jenis;
-        $data->pendidikan = $request->pendidikan;
-        $data->jurusan = $request->jurusan;
-        $data->hari = $request->hari;
-        $data->save();
-        return redirect()->route('data.index')
-        ->with('success','Company Has Been updated successfully');
-        }
-
-public function destroy(Request $request)
-    {
-        $com = Data::where('id',$request->id)->delete();
-        return Response()->json($com);
+        Data::find($id)->delete();
+      
+        return response()->json(['success'=>'Product deleted successfully.']);
     }
-
 }

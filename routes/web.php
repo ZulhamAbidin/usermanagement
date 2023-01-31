@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('data', DataController::class)->middleware('admin');
+// Route::resource('data', DataController::class)->middleware('admin');
+
+Route::resource('data', DataController::class);
 
 Route::post('delete-data', [DataController::class,'destroy'])->middleware('admin');

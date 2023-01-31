@@ -24,9 +24,9 @@ return new class extends Migration
         {
             Schema::create('data', function (Blueprint $table) {
                 $table->id();
-                /* $table->string('name'); */ $table->string('nama');
-               /*  $table->string('email'); */ $table->string('alamat');
-                /* $table->string('address'); */$table->string('nik');
+                $table->string('nama');
+                $table->string('alamat');
+                $table->string('nik');
                 $table->string('jenis');
                 $table->string('pendidikan');
                 $table->string('jurusan');
@@ -34,6 +34,8 @@ return new class extends Migration
                 $table->timestamps();
             });
         }
+
+      
 
     /**
      * Reverse the migrations.
