@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -36,3 +37,9 @@ require __DIR__.'/auth.php';
 Route::resource('data', DataController::class);
 
 Route::post('delete-data', [DataController::class,'destroy'])->middleware('admin');
+
+//CETAK
+// Route::get('/cetak', 'CetakController@index');
+
+
+Route::get('/cetak', [CetakController::class, 'index']);

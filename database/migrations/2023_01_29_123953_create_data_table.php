@@ -20,12 +20,12 @@ return new class extends Migration
     //     });
     // }
 
-            public function up()
+        public function up()
         {
             Schema::create('data', function (Blueprint $table) {
-               /*  $table->id(); */
-                $table->uuid('nik')->primary();
+                $table->id();
                 $table->string('nama');
+                $table->string('nik');
                 $table->string('alamat');
                 $table->string('jenis');
                 $table->string('pendidikan');

@@ -24,10 +24,9 @@ class DataController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->nik.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                          $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
    
-                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->nik.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
-    
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';    
                             return $btn;
                     })
                     ->rawColumns(['action'])
@@ -42,11 +41,11 @@ class DataController extends Controller
     {
 
         Data::updateOrCreate([
-                    /* 'id' => $request->id */
-                    'nik' => $request->nik, 
+                    'id' => $request->id 
                 ],
                 [
                     'nama' => $request->nama,
+                    'nik' => $request->nik,
                     'alamat' => $request->alamat, 
                     'jenis' => $request->jenis,  
                     'pendidikan' => $request->pendidikan, 
@@ -62,9 +61,9 @@ class DataController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($nik)
+    public function edit($id)
     {
-        $product = Data::find($nik);
+        $product = Data::find($id);
         return response()->json($product);
     }
     
@@ -74,9 +73,9 @@ class DataController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nik)
+    public function destroy($id)
     {
-        Data::find($nik)->delete();
+        Data::find($id)->delete();
       
         return response()->json(['success'=>'Product deleted successfully.']);
     }

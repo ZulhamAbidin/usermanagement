@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Laravel Ajax CRUD Tutorial Example - ItSolutionStuff.com</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,9 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 </head>
-
 <body>
-
     <div class="container">
         <h1>Laravel Ajax CRUD Tutorial Example - ItSolutionStuff.com</h1>
         <a class="btn btn-success" href="javascript:void(0)" id="createNewProduct"> Create New Product</a>
@@ -47,6 +44,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="productForm" name="productForm" class="form-horizontal">
+                        <input type="hidden" name="id" id="id">
 
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">nama</label>
@@ -159,7 +157,7 @@
     --------------------------------------------*/
     $('#createNewProduct').click(function () {
         $('#saveBtn').val("create-product");
-        $('#nik').val('');
+        $('#id').val('');
         $('#productForm').trigger("reset");
         $('#modelHeading').html("Create New Product");
         $('#ajaxModel').modal('show');
@@ -171,12 +169,12 @@
     --------------------------------------------
     --------------------------------------------*/
     $('body').on('click', '.editProduct', function () {
-      var nik = $(this).data('nik');
-      $.get("{{ route('data.index') }}" +'/' + nik +'/edit', function (data) {
+      var id = $(this).data('id');
+      $.get("{{ route('data.index') }}" +'/' + id +'/edit', function (data) {
           $('#modelHeading').html("Edit Product");
           $('#saveBtn').val("edit-user");
           $('#ajaxModel').modal('show');
-            /* $('#id').val(data.id); */
+            $('#id').val(data.id);
             $('#nama').val(data.nama);
             $('#nik').val(data.nik);
             $('#alamat').val(data.alamat);
@@ -222,12 +220,12 @@
     --------------------------------------------*/
     $('body').on('click', '.deleteProduct', function () {
      
-        var nik = $(this).data("nik");
+        var id = $(this).data("id");
         confirm("Are You sure want to delete !");
         
         $.ajax({
             type: "DELETE",
-            url: "{{ route('data.store') }}"+'/'+nik,
+            url: "{{ route('data.store') }}"+'/'+id,
             success: function (data) {
                 table.draw();
             },

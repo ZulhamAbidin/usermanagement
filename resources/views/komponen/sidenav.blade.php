@@ -39,7 +39,7 @@
             
             <ul class="side-menu__sub-open">
                 <li>
-                    <a href="index.html" class="side-menu side-menu--active">
+                    <a href="/data" class="side-menu side-menu--active">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="eye" data-lucide="eye"
