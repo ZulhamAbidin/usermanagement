@@ -53,22 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-dashboard-overview-2.html" class="side-menu">
-                        <div class="side-menu__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="user-plus" data-lucide="user-plus"
-                                class="lucide lucide-user-plus block mx-auto">
-                                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
-                                <circle cx="8.5" cy="7" r="4"></circle>
-                                <line x1="20" y1="8" x2="20" y2="14"></line>
-                                <line x1="23" y1="11" x2="17" y2="11"></line>
-                            </svg>
-                        </div>
-                        <div class="side-menu__title"> Cetak  </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-dashboard-overview-3.html" class="side-menu">
+                    <a href="/cetak/" class="side-menu">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="printer" data-lucide="printer"
@@ -78,7 +63,7 @@
                                 <rect x="6" y="14" width="12" height="8"></rect>
                             </svg>
                         </div>
-                        <div class="side-menu__title"> Cetak Data</div>
+                        <div class="side-menu__title"> Export dan Cetak </div>
                     </a>
                 </li>
             </ul>
@@ -100,7 +85,7 @@
             </a>
             <ul class="">
                 <li>
-                    <a href="index.html" class="side-menu">
+                    <a href="/document/index" class="side-menu">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="file-plus" data-lucide="file-plus"
@@ -115,7 +100,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">
+                    <a href="/document/show" class="side-menu">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="eye" data-lucide="eye"
@@ -129,9 +114,7 @@
                 </li>
             </ul>
         </li>
-
-        <li class="side-nav__devider my-6"></li>
-
+        
         <li>
             <a href="javascript:;" class="side-menu">
                 <div class="side-menu__icon">
@@ -166,7 +149,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-add-product.html" class="side-menu">
+                    <a href="/user" class="side-menu">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="eye" data-lucide="eye"

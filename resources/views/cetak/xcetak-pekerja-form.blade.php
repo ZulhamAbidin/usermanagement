@@ -22,8 +22,6 @@
                 </div>
             </div>
 
-
-
             <div class="grid grid-cols-6 gap-6 mt-10">
 
                 <div class="col-span-6 lg:col-span-3">
