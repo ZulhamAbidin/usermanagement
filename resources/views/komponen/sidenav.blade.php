@@ -64,7 +64,7 @@
                                 <line x1="23" y1="11" x2="17" y2="11"></line>
                             </svg>
                         </div>
-                        <div class="side-menu__title"> Tambah Data </div>
+                        <div class="side-menu__title"> Cetak  </div>
                     </a>
                 </li>
                 <li>

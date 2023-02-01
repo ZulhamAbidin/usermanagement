@@ -97,7 +97,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">hari</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="hari" name="hari" placeholder="Enter hari" 
+                                <input type="date" class="form-control" id="hari" name="hari" placeholder="Enter hari" 
                                     required>
                             </div>
                         </div>

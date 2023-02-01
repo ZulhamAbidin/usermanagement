@@ -41,5 +41,9 @@ Route::post('delete-data', [DataController::class,'destroy'])->middleware('admin
 //CETAK
 // Route::get('/cetak', 'CetakController@index');
 
-
 Route::get('/cetak', [CetakController::class, 'index']);
+
+// CETAK DATA PERTANGGAL
+Route::get('/cetak/cetak-data-pekerja-form', [datacontroller::class, 'cetakForm'])->name('cetak-data-pekerja-form');
+Route::get('/cetak/cetak-data-pertanggal/{tglawal}/{tglakhir}', [datacontroller::class, 'cetakPekerjaPertanggal'])->name('cetak-data-pertanggal');
+Route::get('/exportexcel', [datacontroller::class, 'exportexcel'])->name('exportexcel');

@@ -79,4 +79,22 @@ class DataController extends Controller
       
         return response()->json(['success'=>'Product deleted successfully.']);
     }
+
+
+        public function cetakForm()
+    {
+        return view('/cetak/cetak-pekerja-form');
+    }
+
+    public function cetakPekerjaPertanggal($tglawal, $tglakhir)
+    {
+        $cetakPertanggal = data::whereBetween('hari', [$tglawal, $tglakhir])->get();
+        return view('/cetak/cetak-pekerja-pertanggal', compact('cetakPertanggal'));
+    }
+
+   
+    public function exportexcel()
+    {
+        return Excel::download(new dataexport, 'data.xlsx');
+    }
 }
