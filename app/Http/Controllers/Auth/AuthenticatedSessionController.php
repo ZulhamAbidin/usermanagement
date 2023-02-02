@@ -29,7 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'Berhasil Mendaftarkan User Baru!');
+        return redirect('dashboard')->with('success', 'Login Berhasil');
     }
 
     /**
@@ -43,6 +44,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Anda Telah Berhasil Logout');
     }
 }

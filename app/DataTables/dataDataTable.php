@@ -64,7 +64,7 @@ class dataDataTable extends DataTable
                     ->orderBy(1)
                     ->parameters([
                         'dom'          => 'Bfrtip',
-                        'buttons'      => ['excel', 'csv'],
+                        'buttons'      => ['excel', 'csv', 'pdf'],
                     ]);
     }
 
@@ -89,8 +89,8 @@ class dataDataTable extends DataTable
             Column::make('pendidikan'),
             Column::make('jurusan'),
             Column::make('hari'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            // Column::make('created_at'),
+            // Column::make('updated_at'),
         ];
     }
 

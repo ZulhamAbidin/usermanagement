@@ -22,48 +22,46 @@ Route::get('/', function () {
     return view('/auth/login');
 });
 
-Route::get('register', [RegisteredUserController::class, 'create'])->name('register')->middleware('admin');
-
-    Route::post('register', [RegisteredUserController::class, 'store']);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'admin', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //DATA PEKERJA AJAX
+    Route::resource('data', DataController::class);
+    Route::post('delete-data', [DataController::class,'destroy']);
 });
+
+    require __DIR__.'/auth.php';
+
 
 Route::middleware('admin')->group(function () {
     Route::resource('/user', ManagemenUserController::class);
+
+    //CETAK CUSTOM AJAX
+    Route::get('/cetak', [CetakController::class, 'index']);
+
+    // CETAK DATA PERTANGGAL
+    Route::get('/cetak/cetak-data-pekerja-form', [datacontroller::class, 'cetakForm'])->name('cetak-data-pekerja-form');
+    Route::get('/cetak/cetak-data-pertanggal/{tglawal}/{tglakhir}', [datacontroller::class, 'cetakPekerjaPertanggal'])->name('cetak-data-pertanggal');
+
+    // DOCUMENT SHOW DOWNLOAD ADD
+    Route::get('/document/index',[documentcontroller::class,'uploaddocument']);
+    Route::post('/document',[documentcontroller::class,'store']);
+    Route::get('/document/show',[documentcontroller::class,'show']);
+    Route::get('/document/download/{file}',[documentcontroller::class,'download']);
+
+    Route::get('/document/show/{id}',[documentcontroller::class,'delete']);
+    Route::get('/document/view/{is}',[documentcontroller::class,'view']);
 });
 
-require __DIR__.'/auth.php';
 
-// Route::resource('data', DataController::class)->middleware('admin');
 
-Route::resource('data', DataController::class);
 
-Route::post('delete-data', [DataController::class,'destroy'])->middleware('admin');
 
-//CETAK
-// Route::get('/cetak', 'CetakController@index');
-
-Route::get('/cetak', [CetakController::class, 'index']);
-
-// CETAK DATA PERTANGGAL
-Route::get('/cetak/cetak-data-pekerja-form', [datacontroller::class, 'cetakForm'])->name('cetak-data-pekerja-form');
-Route::get('/cetak/cetak-data-pertanggal/{tglawal}/{tglakhir}', [datacontroller::class, 'cetakPekerjaPertanggal'])->name('cetak-data-pertanggal');
-
-// DOCUMENT SHOW DOWNLOAD ADD
-Route::get('/document/index',[documentcontroller::class,'uploaddocument']);
-Route::post('/document',[documentcontroller::class,'store']);
-Route::get('/document/show',[documentcontroller::class,'show']);
-Route::get('/document/download/{file}',[documentcontroller::class,'download']);
-
-Route::get('/document/show/{id}',[documentcontroller::class,'delete']);
-Route::get('/document/view/{is}',[documentcontroller::class,'view']);
 
 

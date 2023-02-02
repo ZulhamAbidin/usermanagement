@@ -29,7 +29,7 @@
 
                 <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
 
-                    {{-- @if (session()->has('success'))
+                    @if (session()->has('success'))
                     <div class="alert alert-primary alert-dismissible show flex items-center mb-2" role="alert">
                         <i data-lucide="alert-circle" class="w-6 h-6 mr-2"></i>
                         {{ session('success') }}
@@ -37,7 +37,7 @@
                             <i data-lucide="x" class="w-4 h-4"></i>
                         </button>
                     </div>
-                    @endif --}}
+                    @endif
 
                     <table class="table table-report -mt-2">
                         <thead>
