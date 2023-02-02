@@ -24,13 +24,13 @@ return new class extends Migration
         {
             Schema::create('data', function (Blueprint $table) {
                 $table->id();
-                $table->string('nama');
-                $table->string('nik');
-                $table->string('alamat');
-                $table->string('jenis');
-                $table->string('pendidikan');
+                $table->string('nama_lengkap');
+                // $table->string('nik');
+                $table->string('alamat_domisili');
+                $table->string('jenis_kelamin');
+                $table->string('pendidikan_terakhir');
                 $table->string('jurusan');
-                $table->string('hari');
+                $table->string('tanggal_pengesahan');
                 $table->timestamps();
             });
         }

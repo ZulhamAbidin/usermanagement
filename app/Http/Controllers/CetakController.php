@@ -9,9 +9,6 @@ class CetakController extends Controller
 {
     public function index(dataDataTable $dataTable)
     {
-        
-        
-        
         return $dataTable->render('/cetak/index');
     }
 }

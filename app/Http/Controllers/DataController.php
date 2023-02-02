@@ -44,13 +44,13 @@ class DataController extends Controller
                     'id' => $request->id 
                 ],
                 [
-                    'nama' => $request->nama,
-                    'nik' => $request->nik,
-                    'alamat' => $request->alamat, 
-                    'jenis' => $request->jenis,  
-                    'pendidikan' => $request->pendidikan, 
+                    'nama_lengkap' => $request->nama_lengkap,
+                    // 'nik' => $request->nik,
+                    'alamat_domisili' => $request->alamat_domisili, 
+                    'jenis_kelamin' => $request->jenis_kelamin,  
+                    'pendidikan_terakhir' => $request->pendidikan_terakhir, 
                     'jurusan' => $request->jurusan, 
-                    'hari' => $request->hari
+                    'tanggal_pengesahan' => $request->tanggal_pengesahan
                 ]);        
      
         return response()->json(['success'=>'Product saved successfully.']);

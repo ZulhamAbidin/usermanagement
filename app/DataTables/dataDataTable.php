@@ -81,14 +81,14 @@ class dataDataTable extends DataTable
             //     ->printable(false)
             //     ->width(60)
             //     ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('nama'),
-            Column::make('nik'),
-            Column::make('alamat'),
-            Column::make('jenis'),
-            Column::make('pendidikan'),
+            // Column::make('id'),
+            Column::make('nama_lengkap'),
+            // Column::make('nik'),
+            Column::make('alamat_domisili'),
+            Column::make('jenis_kelamin'),
+            Column::make('pendidikan_terakhir'),
             Column::make('jurusan'),
-            Column::make('hari'),
+            Column::make('tanggal_pengesahan'),
             // Column::make('created_at'),
             // Column::make('updated_at'),
         ];

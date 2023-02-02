@@ -32,14 +32,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //DATA PEKERJA AJAX
-    Route::resource('data', DataController::class);
-    Route::post('delete-data', [DataController::class,'destroy']);
+   
 });
 
     require __DIR__.'/auth.php';
 
 
 Route::middleware('admin')->group(function () {
+    
+});
+
+
+
+ Route::resource('data', DataController::class);
+    Route::post('delete-data', [DataController::class,'destroy']);
+
+
     Route::resource('/user', ManagemenUserController::class);
 
     //CETAK CUSTOM AJAX
@@ -57,11 +65,3 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/document/show/{id}',[documentcontroller::class,'delete']);
     Route::get('/document/view/{is}',[documentcontroller::class,'view']);
-});
-
-
-
-
-
-
-
