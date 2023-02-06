@@ -77,7 +77,7 @@
                 </li>
 
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href=""><i class="side-menu__icon fe fe-settings"></i><span
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="/profile"><i class="side-menu__icon fe fe-settings"></i><span
                             class="side-menu__label">Settings</span></a>
                 </li>
                 

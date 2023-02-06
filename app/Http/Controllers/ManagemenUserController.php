@@ -8,10 +8,21 @@ class ManagemenUserController extends Controller
 {
     public function index() /* menampilkan data */
     {
+       
+
+        $user = User::latest();
+
+        if(request('search')){
+            $user->where('name', 'like', '%' . request('search') . '%')
+            ->orWhere('email', 'like', '%' . request('search') . '%')
+             ->orderBy('id', 'desc');
+        }
+
         return view('user.index', [
-            "judul" => "List User",
-            'user' => User::all()
+           "user" => $user->paginate(5)
         ]);
+
+
     }
 
      public function store(Request $request)

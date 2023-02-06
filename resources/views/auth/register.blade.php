@@ -1,49 +1,134 @@
-@extends('layouts.master')
+@extends('include.main')
 
-@section('container')
+@section('main')
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
 
-<form method="POST" action="{{ route('register') }}" class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
-    @csrf
+            <!-- app-Header -->
+            @include('include.layouts.header')
+            <!-- /app-Header -->
 
-    <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
-        <div
-            class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+            <!--APP-SIDEBAR-->
+            @include('include.layouts.sidebar')
+            <!--/APP-SIDEBAR-->
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                
-            <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-                Sign Up
-            </h2>
-            <div class="intro-x mt-2 text-slate-400 dark:text-slate-400 xl:hidden text-center">A few more clicks to sign
-                in
-                to your account. Manage all your e-commerce accounts in one place</div>
-            <div class="intro-x mt-8">
-                <input type="text" id="name" class="intro-x login__input form-control py-3 px-4 block"
-                    placeholder="Username" name="name" :value="old('name')" required autofocus />
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
+
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">Management Users</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Users</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
+
+                        <!-- ROW-1 OPEN -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title">Create New Users</div>
+
+                                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                    </div>
+                                    
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
+
+                                        <div class="card-body">
+
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label"> Nama :</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="name" class="form-control" placeholder="Username"
+                                                        name="name" :value="old('name')" required autofocus />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label"> Email :</label>
+                                                <div class="col-md-9">
+                                                    <input type="email" id="email" class="form-control" placeholder="Email" name="email" :value="old('email')" required />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label">Role :</label>
+                                                <div class="col-md-9">
+                                                    <select name="is_admin" class="form-control form-select select2" data-bs-placeholder="Select Role">
+                                                       <option value="1">Super User</option>
+                                                    <option value="0" selected>User Admin</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label"> Password :</label>
+                                                <div class="col-md-9">
+                                                    <input type="password" id="password" class="form-control" placeholder="Password"
+                                                        name="password" :value="old('password')" required autofocus />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label"> password confirmation :</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="password_confirmation" class="form-control" placeholder="password_confirmation"
+                                                        name="password_confirmation" :value="old('password_confirmation')" required autofocus />
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            <!--Row-->
+
+                                            <!--End Row-->
+                                        </div>
 
 
-                <input type="email" id="email" class="intro-x login__input form-control py-3 px-4 block mt-4"
-                    placeholder="Email" name="email" :value="old('email')" required />
+                                        <div class="card-footer">
+                                            <!--Row-->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-primary float-end">Upload</button>
+                                                </div>
+                                            </div>
+                                            <!--End Row-->
+                                        </div>
 
-
-                <input type="password" id="password" class="intro-x login__input form-control py-3 px-4 block mt-4"
-                    placeholder="Password" name="password" required autocomplete="new-password" />
-
-
-                <input type="password" id="password_confirmation"
-                    class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password Confirmation"
-                    name="password_confirmation" required autocomplete="new-password" />
-
-
-                <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                    <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Register</button>
-                    <button class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Sign
-                        in</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ROW-1 CLOSED -->
+                    </div>
+                    <!-- CONTAINER CLOSED -->
                 </div>
             </div>
+            <!--app-content closed-->
         </div>
 
-        @endsection
+
+
+        <!-- FOOTER -->
+        @include('include.layouts.footer')
+        <!-- FOOTER CLOSED -->
+    </div>
+
+    <!-- BACK-TO-TOP -->
+
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+@endsection
