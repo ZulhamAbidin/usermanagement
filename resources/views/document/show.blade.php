@@ -1,186 +1,143 @@
-<div class="bungkus">
+@extends('include.main')
 
-    <div class="main lg:mt-3">
+@section('main')
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
 
-        <div class="header p-2 grid grid-cols-12 items-center ">
+            <!-- app-Header -->
+            @include('include.layouts.header')
+            <!-- /app-Header -->
 
-            <div class="toggle row-start-1 col-span-1 md:mt-2 hidden lg:flex invisible lg:visible">
-                <ion-icon name="menu-outline" class="hidden lg:flex"></ion-icon>
-            </div>
+            <!--APP-SIDEBAR-->
+            @include('include.layouts.sidebar')
+            <!--/APP-SIDEBAR-->
 
-            <form action action="{{ url('/document/show') }}" method="GET"
-                class="col-span-11 row-start-1 lg:col-span-9 col-start-1 flex items-center">
-                <label for="simple-search" class="sr-only">Search</label>
-                <div class="relative w-full">
-                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        {{-- <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                clip-rule="evenodd"></path>
-                        </svg> --}}
-                    </div>
-                    <input type="text" name="search" id="myInputTextField"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-temaku focus:border-temaku block w-full pl-10 p-2.5"
-                        placeholder="Search" required="">
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
 
-                    <a href="{{ url('/document/show') }}" class="absolute top-2 right-3">
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg> --}}a
-                    </a>
-                </div>
-                <button type="submit"
-                    class="p-2.5 ml-2 text-sm font-medium text-white bg-temaku rounded-lg border border-temaku hover:bg-temakuhover focus:ring-4 focus:outline-none focus:ring-temakuhover">
-                    {{-- <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg> --}}
-                    <span class="sr-only">Search</span>
-                </button>
-            </form>
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
 
-            <button id="dropdownDefault" data-dropdown-toggle="dropdown"
-                class="text-white invisible lg:visible bg-temaku hover:bg-temakuhover w-fit mx-auto col-span-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button">
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">E-Document</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">File Manager</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">List E-Document</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
 
-                {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6 mr-2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg> --}}
+                        <!-- Row -->
+                        <div class="row row-sm">
+                            <div class="col-md-12 col-lg-12 col-xl-12">
+                                <div class="row row-sm">
 
-                Admin
+                                    <div class="row">
 
-                {{-- <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg> --}}
+                                        <div class="col-sm-12 col-md-12">
+                                            <div class="card">
+                                                <div class="card-body pb-2">
+                                                    <div class="text-dark mb-4 ms-1 fs-20 fw-semibold">List Document</div>
+                                                    <form action action="{{ url('/document/show') }}" method="GET"
+                                                        class="input-group pb-4">
+                                                        <input type="text" value="{{ request('search') }}" name="search"
+                                                            class="form-control" placeholder="Searching.....">
+                                                        <button type="submit"
+                                                            class="input-group-text btn btn-primary">Search</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            </button>
-            <!-- Dropdown menu -->
-            <div id="dropdown"
-                class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-                data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
-                style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 539px);">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-                    
-                    <li>
-                        <a href="/dashboard" class="block py-2 px-4 hover:bg-gray-100">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/password/edit" class="block py-2 px-4 hover:bg-gray-100">Settings</a>
-                    </li>
-                    <li>
-                        <form action="/logout" method="post" class="hover:bg-gray-100">
-                            @csrf
-                            <button class="block py-2 px-4 hover:bg-gray-100" type="submit">Sign Out</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                                        @foreach ($document as $key => $value)
+                                        <div class="col-xl-3 col-md-6 col-sm-6">
+                                            <div class="card pos-relative">
+                                                <a href="" class="open-file"></a>
+                                        
+                                                <div class="card-body px-4 pt-4 pb-2">
+                                                    <div class="d-flex">
+                                                        <span class="bg-primary-transparent border border-primary brround">
+                                                            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                                                <path fill="#645acf"
+                                                                    d="M9.3 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4H10L12 6H20C21.1 6 22 6.9 22 8V14.6C20.6 13.6 18.9 13 17 13C13.5 13 10.4 15.1 9.1 18.3L8.8 19L9.1 19.7C9.2 19.8 9.2 19.9 9.3 20M23 19C22.1 21.3 19.7 23 17 23S11.9 21.3 11 19C11.9 16.7 14.3 15 17 15S22.1 16.7 23 19M19.5 19C19.5 17.6 18.4 16.5 17 16.5S14.5 17.6 14.5 19 15.6 21.5 17 21.5 19.5 20.4 19.5 19M17 18C16.4 18 16 18.4 16 19S16.4 20 17 20 18 19.6 18 19 17.6 18 17 18" />
+                                                            </svg>
+                                                        </span>
+                                        
+                                                        <div class="ms-auto mt-1 file-dropdown">
+                                                            <a href="javascript:void(0)" class="text-muted" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false"><i class="fe fe-more-vertical fs-18"></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-start">
+                                                                <a href="{{ url('/document/download', $value->file) }}" class="dropdown-item"
+                                                                    href="javascript:void(0)"><i class="fe fe-download me-2"></i>
+                                                                    Download</a>
+                                                                <a href="/document/show/{{ $value->id }}" class="dropdown-item" href="javascript:void(0)"><i
+                                                                        class="fe fe-trash me-2"></i> Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        
+                                                <div class="card-footer border-top-0">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="text-primary">{{ $value->nama }}</h5>
+                                                            <p class="text-muted fs-13 mb-0">
+                                                                {{ $value->description }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        
+                                            </div>
+                                        </div>
+                                        @endforeach
 
-        <div class="bg-white lg:mt-3 inset-0 z-10 p-4 lg:pb-0 lg:pt-0">
+                                        <div class="card-footer">
+                                            <!--Row-->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="float-end">{{ $document->links() }}</div>
+                                                </div>
+                                            </div>
+                                            <!--End Row-->
+                                        </div>
 
-            @if (Session::has('success'))
+                                        
+                                        @if ($document->count())
 
-            <div class="flex justify-between text-slate-50 shadow-inner rounded p-3 bg-temaku mx-24 my-6">
-                <p class="self-center">
-                    <strong>{{ Session::get('success') }}</strong>
-                </p>
-                <strong class="text-xl align-center cursor-pointer alert-del">&times;</strong>
-            </div>
+                                        @else
+                                            <p class="text-center">Tidak Ada Document.</p>
+                                        @endif
 
-            @endif
+                                    </div>
 
-            <div class="mb-1 grid grid-cols-5 mt-4 lg:flex justify-between">
-
-                <div class="mb-1 mt-1 col-span-2 lg:col-span-2 lg:ml-5 overflow-x-auto">
-                    <h1 class="text-xl sm:text-2xl font-semibold text-gray-900 uppercase">Cloud Document</h1>
-                </div>
-
-                <div class="mb-1 col-span-2 col-start-5 lg:mr-28 overflow-x-auto">
-                    <a href="/document/index"
-                        class=" text-white bg-temaku py-2 px-4 text-sm hover:bg-temakuhover focus:ring-4 focus:ring-temaku font-medium inline-flex items-center rounded-lg">
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-5 h-5 mr-2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg> Upload</a> --}}back
-                </div>
-
-            </div>
-
-            <div class="overflow-x-auto relative mx-4 mt-8">
-                <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
-                        <tr>
-                            <th  class="py-3 px-6 rounded-l-lg">
-                                No
-                            </th>
-                            <th  class="py-3 px-6">
-                                Nama Dokumen
-                            </th>
-                            <th  class="py-3 px-6">
-                                Description Dokumen
-                            </th>
-                            <th class="py-3 rounded-r-xl text-center">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($document as $key=>$value)
-                        <tr class="bg-white hover:bg-slate-100 hover:text-black">
-                            <td class="py-3 px-6 text-center">
-                                {{ $document->firstItem() + $key }}
-                            </td>
-                            <td class="py-3 px-6 lg:w-56">
-                                {{ $value->nama }}
-                            </td>
-                            <td class="py-3 px-6 ">
-                                {{ $value->description }}
-                            </td>
-                            <td class="py-3 rounded-r-xl">
-
-                                <div class="rounded-md shadow-sm flex">
-                                    <a href="/document/show/{{ $value->id }}" aria-current="page"
-                                        class="px-4 py-2 text-sm font-medium flex bg-white border text-temaku hover:text-temakuhover border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
-                                        {{-- <svg class="h-5 w-5 mr-3 text-xs text-temaku hover:text-temakuhover" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                clip-rule="evenodd">
-                                            </path>
-                                        </svg> --}}
-                                        Delete
-                                    </a>
-                                    <a href="{{url('/document/download',$value->file)}}"
-                                        class="px-4 flex py-2 text-sm font-medium  text-temaku hover:text-temakuhover bg-white border-t border-b border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
-                                        {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-temaku hover:text-temakuhover mr-3 text-xs inline">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                        </svg> --}}
-                                        Download
-                                    </a>
                                 </div>
 
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
+                            </div>
 
-                </table>
-                <div class="mx-2 my-10">
-                    {{ $document->onEachSide(2)->links() }}
+                            <!-- End Row -->
+                        </div>
+                        <!-- End Row -->
+                    </div>
+                    <!-- CONTAINER CLOSED -->
+
                 </div>
             </div>
-
+            <!--app-content closed-->
         </div>
+
+
+
+        <!-- FOOTER -->
+        @include('include.layouts.footer')
+        <!-- FOOTER CLOSED -->
     </div>
 
-</div>
+    <!-- BACK-TO-TOP -->
+
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+@endsection

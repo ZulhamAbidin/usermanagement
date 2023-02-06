@@ -1,60 +1,102 @@
-<div class="bungkus">
+@extends('include.main')
 
-    <div class="main mt-3">
-        <div class="hedaer hidden md:flex">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
-            </div>
+@section('main')
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
 
-        </div>
+            <!-- app-Header -->
+            @include('include.layouts.header')
+            <!-- /app-Header -->
 
+            <!--APP-SIDEBAR-->
+            @include('include.layouts.sidebar')
+            <!--/APP-SIDEBAR-->
 
-        <div class="bg-white lg: lg:mt-3 px-3 inset-0 p-2 lg:pb-0 lg:pt-0">
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
 
-            <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
-                <div class="mb-1 w-full">
-                    <div class="mb-1">
-                        <h1 class="text-xl sm:text-2xl font-semibold text-gray-900 uppercase">Upload New Document</h1>
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">E-Document</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Document</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Upload</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
+
+                        <!-- ROW-1 OPEN -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title">Upload New Document</div>
+                                    </div>
+                                    <form action="{{ url('document/') }}" method="post" enctype="multipart/form-data">
+
+                                        @csrf
+                                        
+                                        <div class="card-body">
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label">Nama Document :</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="nama" class="form-control"
+                                                        placeholder="Nama Document">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label">Deskripsi Document :</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="description" class="form-control"
+                                                        placeholder="Deskripsi Document">
+                                                </div>
+                                            </div>
+
+                                            <!--Row-->
+                                            <div class="row">
+                                                <label class="col-md-3 form-label mb-4">Unggah Document</label>
+                                                <div class="col-md-9">
+                                                    <input id="" type="file" name="file">
+                                                </div>
+                                            </div>
+                                            <!--End Row-->
+                                        </div>
+                                        <div class="card-footer">
+                                            <!--Row-->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-primary float-end">Upload</button>
+                                                </div>
+                                            </div>
+                                            <!--End Row-->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ROW-1 CLOSED -->
                     </div>
+                    <!-- CONTAINER CLOSED -->
                 </div>
             </div>
-
-            <form action="{{url('/document')}}" method="post" enctype="multipart/form-data">
-
-                @csrf
-
-                <div class="mb-6 mt-8">
-                    <label for="success" class="block mb-2 text-sm font-medium text-slate-900">Nama Document</label>
-                    <input type="text" name="nama"
-                        class="bg-slate-50 text-slate-900 outline-temaku border border-gray-500 focus:border-temaku  focus:ring-temaku text-sm rounded-lg 0 block w-full p-2.5"
-                        placeholder="Nama Document" required>
-                </div>
-
-                <div class="mb-6 mt-8">
-                    <label for="success" class="block mb-2 text-sm font-medium text-slate-900">Deskripsi
-                        Document</label>
-                    <input type="text" name="description"
-                        class="bg-slate-50 text-slate-900 outline-temaku border border-gray-500 focus:border-temaku  focus:ring-temaku text-sm rounded-lg 0 block w-full p-2.5"
-                        placeholder="Deskripsi Document" required>
-                </div>
-
-
-                <label class="block mb-2 text-sm font-medium text-gray-900" for="default_size">Pilih Document</label>
-                <input
-                    class="block mb-5 py-2 w-full text-sm text-gray-900 bg-gray-50 focus:border-temaku  focus:ring-temaku rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
-                    id="default_size" type="file" name="file" required>
-
-                <a href="/document/show">
-                    <button type="submit"
-                        class="text-white block w-full bg-temaku hover:bg-temakuhover  focus:ring-4 focus:ring-temaku mt-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none ">Unggah
-                        Document
-                    </button>
-                </a>
-
-            </form>
-
+            <!--app-content closed-->
         </div>
 
+
+
+        <!-- FOOTER -->
+        @include('include.layouts.footer')
+        <!-- FOOTER CLOSED -->
     </div>
 
-</div>
+    <!-- BACK-TO-TOP -->
+
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+@endsection

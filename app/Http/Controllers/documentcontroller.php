@@ -27,12 +27,26 @@ class documentcontroller extends Controller
 
     public function show(Request $request)
     {
-        $request = $request->search;
-        $document = document::where('nama', 'LIKE', '%' . $request . '%')
-            ->orWhere('description', 'LIKE', '%' . $request . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(1);
-        return view('/document/show', compact('document'));
+
+        $document = document::latest();
+
+        if(request('search')){
+            $document->where('nama', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%')
+            ->orderBy('id', 'desc');
+        }
+
+        return view('/document/show', [
+            "document" => $document->paginate(8)
+        ]);
+
+
+        // $request = $request->search;
+        // $document = document::where('nama', 'LIKE', '%' . $request . '%')
+        //     ->orWhere('description', 'LIKE', '%' . $request . '%')
+        //     ->orderBy('id', 'desc')
+        //     ->paginate(2);
+        // return view('/document/show', compact('document'));
     }
 
     public function download(Request $request, $file)
@@ -51,6 +65,6 @@ class documentcontroller extends Controller
     {
         $data = document::find($id);
         $data->delete();
-        return redirect('document/show/')->with('success', 'Data Berhasil Dihapus');
+        return redirect('document/show/')->with('succes', 'Data Berhasil Dihapus');
     }
 }

@@ -24,7 +24,7 @@
                 </li>
 
                 <li class="slide">
-                    <a class="side-menu__item has-link active" data-bs-toggle="slide" href=""><i
+                    <a class="side-menu__item has-link active" data-bs-toggle="slide" href="dashboard"><i
                             class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dasboard</span></a>
                 </li>
 
@@ -39,8 +39,8 @@
                     </a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">DATA PEKERJA</a></li>
-                        <li><a href="" class="slide-item"> List Data</a></li>
-                        <li><a href="" class="slide-item"> Export Data</a></li>
+                        <li><a href="/data/" class="slide-item"> List Data</a></li>
+                        <li><a href="/cetak/" class="slide-item"> Export Data</a></li>
                     </ul>
                 </li>
 
@@ -51,8 +51,8 @@
                     </a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)"></a></li>
-                        <li><a href="file-manager.html" class="slide-item"> List Document</a></li>
-                        <li><a href="file-manager.html" class="slide-item"> Unggah Document</a></li>
+                        <li><a href="/document/show" class="slide-item"> List Document</a></li>
+                        <li><a href="/document/index" class="slide-item"> Unggah Document</a></li>
                     </ul>
                 </li>
 
@@ -61,13 +61,13 @@
                 </li>
 
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href=""><i
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="/user"><i
                             class="side-menu__icon fe fe-user"></i><span class="side-menu__label">List
                             Account</span></a>
                 </li>
 
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href=""><i
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="/register"><i
                             class="side-menu__icon fe fe-user-plus"></i>
                         <span class="side-menu__label">Create Account</span></a>
                 </li>

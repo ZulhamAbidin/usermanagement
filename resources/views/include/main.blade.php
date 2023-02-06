@@ -34,8 +34,7 @@
     <script src="{{ asset('/vendor/datatables/buttons.server-side.js') }}"></script>
 
     <!-- COLOR SKIN CSS -->
-    <link id="theme" rel="stylesheet" type="text/css" media="all"
-        href="{{ asset('assets/colors/color1.css') }}" />
+    <link id="theme" rel="stylesheet" type="text/css" media="all"  href="{{ asset('assets/colors/color1.css') }}" />
 
 </head>
 
@@ -43,6 +42,7 @@
 
     @yield('main')
 
+    <script src="{{ asset('assets/dist/sweetalert2.all.min.js') }}"></script>
     <!-- JQUERY JS -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
@@ -95,8 +95,149 @@
     <!-- CUSTOM JS -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+
+    <!-- INTERNAL Notifications js -->
+    <script src="{{ asset('assets/plugins/notify/js/rainbow.js')}}"></script>
+    <script src="{{ asset('assets/plugins/notify/js/sample.js')}}"></script>
+    <script src="{{ asset('assets/plugins/notify/js/jquery.growl.js')}}"></script>
+    <script src="{{ asset('assets/plugins/notify/js/notifIt.js')}}"></script>
+
+    <!-- INTERNAL File-Uploads Js-->
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+        
+                 
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+        
+                  
+                    var table = $('.data-table').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: "{{ route('data.index') }}",
+                        columns: [{
+                                data: 'DT_RowIndex',
+                                name: 'DT_RowIndex'
+                            },
+                            {
+                                data: 'nama_lengkap',
+                                name: 'nama_lengkap'
+                            },
+                            //  {data: 'nik', name: 'nik'},
+                            {
+                                data: 'alamat_domisili',
+                                name: 'alamat_domisili'
+                            },
+                            {
+                                data: 'jenis_kelamin',
+                                name: 'jenis_kelamin'
+                            },
+                            {
+                                data: 'pendidikan_terakhir',
+                                name: 'pendidikan_terakhir'
+                            },
+                            {
+                                data: 'jurusan',
+                                name: 'jurusan'
+                            },
+                            {
+                                data: 'tanggal_pengesahan',
+                                name: 'tanggal_pengesahan'
+                            },
+                            {
+                                data: 'action',
+                                name: 'action',
+                                orderable: false,
+                                searchable: false
+                            },
+                        ]
+                    });
+        
+               
+                    $('#createNewProduct').click(function() {
+                        $('#saveBtn').val("create-product");
+                        $('#id').val('');
+                        $('#productForm').trigger("reset");
+                        $('#modelHeading').html("Create New Product");
+                        $('#ajaxModel').modal('show');
+                    });
+        
+                    
+                    $('body').on('click', '.editProduct', function() {
+                        var id = $(this).data('id');
+                        $.get("{{ route('data.index') }}" + '/' + id + '/edit', function(data) {
+                            $('#modelHeading').html("Edit Product");
+                            $('#saveBtn').val("edit-user");
+                            $('#ajaxModel').modal('show');
+                            $('#id').val(data.id);
+                            $('#nama_lengkap').val(data.nama_lengkap);
+                            //  $('#nik').val(data.nik);
+                            $('#alamat_domisili').val(data.alamat_domisili);
+                            $('#jenis_kelamin').val(data.jenis_kelamin);
+                            $('#pendidikan_terakhir').val(data.pendidikan_terakhir);
+                            $('#jurusan').val(data.jurusan);
+                            $('#tanggal_pengesahan').val(data.tanggal_pengesahan);
+                        })
+                    });
+        
+                 
+                    $('#saveBtn').click(function(e) {
+                        e.preventDefault();
+                        $(this).html('Simpan');
+        
+                        $.ajax({
+                            data: $('#productForm').serialize(),
+                            url: "{{ route('data.store') }}",
+                            type: "POST",
+                            dataType: 'json',
+                            success: function(data) {
+        
+                                $('#productForm').trigger("reset");
+                                $('#ajaxModel').modal('hide');
+                                table.draw();
+        
+                            },
+                            error: function(data) {
+                                console.log('Error:', data);
+                                $('#saveBtn').html('Save Changes');
+                            }
+                        });
+                    });
+        
+                  
+                    $('body').on('click', '.deleteProduct', function() {
+        
+                        var id = $(this).data("id");
+                        confirm("Are You sure want to delete !");
+        
+                        $.ajax({
+                            type: "DELETE",
+                            url: "{{ route('data.store') }}" + '/' + id,
+                            success: function(data) {
+                                table.draw();
+                            },
+                            error: function(data) {
+                                console.log('Error:', data);
+                            }
+                        });
+                    });
+        
+                });
+    </script>
+
+ 
+
 </body>
 
-{!! $dataTable->scripts() !!}
+{{-- {!! $dataTable->scripts() !!} --}}
 
 </html>

@@ -85,7 +85,6 @@
                     <tr>
                         <th scope="col" class="py-3 px-2 border text-center"> No </th>
                         <th scope="col" class="py-3 px-6 border"> Nama Lengkap </th>
-                        <th scope="col" class="py-3 px-6 border"> NIK </th>
                         <th scope="col" class="py-3 px-6 border"> Alamat Domisili </th>
                         <th scope="col" class="py-3 px-6 border"> Jenis Kelamin </th>
                         <th scope="col" class="py-3 px-6 border"> Pendidikan Terakhir </th>
@@ -97,13 +96,12 @@
                     @foreach ($cetakPertanggal as $key=>$value)
                     <tr class="">
                         <td class="py-3 px-2 border text-center">{{ $loop->iteration }}</td>
-                        <td class="py-3 px-4 border">{{ $value->nama }}</td>
-                        <td class="py-3 px-4 border">{{ $value->nik }}</td>
-                        <td class="py-3 px-4 border">{{ $value->alamat }}</td>
-                        <td class="py-3 px-4 border"> {{ $value->jenis }}</td>
-                        <td class="py-3 px-4 border">{{ $value->pendidikan }}</td>
+                        <td class="py-3 px-4 border">{{ $value->nama_lengkap }}</td>
+                        <td class="py-3 px-4 border">{{ $value->alamat_domisili }}</td>
+                        <td class="py-3 px-4 border">{{ $value->jenis_kelamin }}</td>
+                        <td class="py-3 px-4 border"> {{ $value->pendidikan_terakhir }}</td>
                         <td class="py-3 px-4 border">{{ $value->jurusan }}</td>
-                        <td class="py-3 px-4 border"> {{\Carbon\Carbon::parse($value->hari)->format('d.m.Y') }}</td>
+                        <td class="py-3 px-4 border"> {{\Carbon\Carbon::parse($value->tanggal_pengesahan)->format('d.m.Y') }}</td>
                     </tr>
                     @endforeach
                 </tbody>

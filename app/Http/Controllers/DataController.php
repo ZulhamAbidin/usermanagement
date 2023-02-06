@@ -25,8 +25,8 @@ class DataController extends Controller
                     ->addColumn('action', function($row){
    
                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
-   
-                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';    
+                        
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct" >Delete</a>';    
                             return $btn;
                     })
                     ->rawColumns(['action'])
@@ -54,6 +54,7 @@ class DataController extends Controller
                 ]);        
      
         return response()->json(['success'=>'Product saved successfully.']);
+        // return datatables()->of(YourData::all())->toJson();
     }
     /**
      * Show the form for editing the specified resource.
@@ -76,7 +77,7 @@ class DataController extends Controller
     public function destroy($id)
     {
         Data::find($id)->delete();
-      
+        // return redirect('document/show/')->with('succes', 'Data Berhasil Dihapus');
         return response()->json(['success'=>'Product deleted successfully.']);
     }
 
@@ -88,7 +89,7 @@ class DataController extends Controller
 
     public function cetakPekerjaPertanggal($tglawal, $tglakhir)
     {
-        $cetakPertanggal = data::whereBetween('hari', [$tglawal, $tglakhir])->get();
+        $cetakPertanggal = data::whereBetween('tanggal_pengesahan', [$tglawal, $tglakhir])->get();
         return view('/cetak/cetak-pekerja-pertanggal', compact('cetakPertanggal'));
     }
 
