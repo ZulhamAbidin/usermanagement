@@ -1,134 +1,114 @@
-@extends('layouts.main')
-
+@extends('include.main')
 
 @section('main')
+<!-- PAGE -->
+<div class="page">
+    <div class="page-main">
 
-    <div class="top-bar">
-        <!-- BEGIN: Breadcrumb -->
-        <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Application</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-            </ol>
-        </nav>
+        <!-- app-Header -->
+        @include('include.layouts.header')
+        <!-- /app-Header -->
+
+        <!--APP-SIDEBAR-->
+        @include('include.layouts.sidebar')
+        <!--/APP-SIDEBAR-->
+
+        <!--app-content open-->
+       <div class="main-content app-content mt-0">
+            <div class="side-app">
         
-        <div class="intro-x relative mr-3 sm:mr-6">
-            <div class="search hidden sm:block">
-                <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
-                <i data-lucide="search" class="search__icon dark:text-slate-500"></i>
-            </div>
-            <a class="notification sm:hidden" href=""> <i data-lucide="search"
-                    class="notification__icon dark:text-slate-500"></i> </a>
-            <div class="search-result">
-                <div class="search-result__content">
-                    <div class="search-result__content__title">Pages</div>
-                    <div class="mb-5">
-                        <a href="" class="flex items-center">
-                            <div
-                                class="w-8 h-8 bg-success/20 dark:bg-success/10 text-success flex items-center justify-center rounded-full">
-                                <i class="w-4 h-4" data-lucide="inbox"></i>
-                            </div>
-                            <div class="ml-3">Mail Settings</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 bg-pending/10 text-pending flex items-center justify-center rounded-full">
-                                <i class="w-4 h-4" data-lucide="users"></i>
-                            </div>
-                            <div class="ml-3">Users & Permissions</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div
-                                class="w-8 h-8 bg-primary/10 dark:bg-primary/20 text-primary/80 flex items-center justify-center rounded-full">
-                                <i class="w-4 h-4" data-lucide="credit-card"></i>
-                            </div>
-                            <div class="ml-3">Transactions Report</div>
-                        </a>
+                <!-- CONTAINER -->
+                <div class="main-container container-fluid">
+        
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                        <h1 class="page-title">Dashboard</h1>
+                        <div>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                        </div>
                     </div>
-                    <div class="search-result__content__title">Users</div>
-                    <div class="mb-5">
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="dist/images/profile-7.jpg">
+                    <!-- PAGE-HEADER END -->
+        
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="mt-2">
+                                                    <h6 class="">Total Users Admin</h6>
+                                                    <h2 class="mb-0 number-font"> 1</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="mt-2">
+                                                    <h6 class="">Total Peserta Pengesahan</h6>
+                                                    <h2 class="mb-0 number-font"> 1 </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="mt-2">
+                                                    <h6 class="">Telah Bekerja</h6>
+                                                    <h2 class="mb-0 number-font"> 1 </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="mt-2">
+                                                    <h6 class="">Belum Bekerja</h6>
+                                                    <h2 class="mb-0 number-font">1</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="ml-3">Kevin Spacey</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">
-                                kevinspacey@left4code.com</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="dist/images/profile-2.jpg">
-                            </div>
-                            <div class="ml-3">Johnny Depp</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">
-                                johnnydepp@left4code.com</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="dist/images/profile-5.jpg">
-                            </div>
-                            <div class="ml-3">Johnny Depp</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">
-                                johnnydepp@left4code.com</div>
-                        </a>
-                        <a href="" class="flex items-center mt-2">
-                            <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full"
-                                    src="dist/images/profile-9.jpg">
-                            </div>
-                            <div class="ml-3">Morgan Freeman</div>
-                            <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">
-                                morganfreeman@left4code.com</div>
-                        </a>
+                        </div>
                     </div>
-                    <div class="search-result__content__title">Products</div>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-9.jpg">
-                        </div>
-                        <div class="ml-3">Oppo Find X2 Pro</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Smartphone &amp;
-                            Tablet</div>
-                    </a>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-1.jpg">
-                        </div>
-                        <div class="ml-3">Nikon Z6</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Photography</div>
-                    </a>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-2.jpg">
-                        </div>
-                        <div class="ml-3">Sony Master Series A9G</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">Electronic</div>
-                    </a>
-                    <a href="" class="flex items-center mt-2">
-                        <div class="w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/preview-8.jpg">
-                        </div>
-                        <div class="ml-3">Dell XPS 13</div>
-                        <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">PC &amp; Laptop
-                        </div>
-                    </a>
+
                 </div>
+                <!-- CONTAINER END -->
             </div>
         </div>
-        <!-- END: Search -->
+        <!--app-content close-->
+        <!--app-content closed-->
+    </div>
 
-    
-        <!-- BEGIN: Account Menu -->
-        @include('layouts.dropdownprofile')
-        <!-- END: Account Menu -->
-    </div>
-    
-    
-    <!-- END: Top Bar -->
-    <div class="grid grid-cols-12 gap-6">
-    
-    </div>
-    
+
+
+    <!-- FOOTER -->
+    @include('include.layouts.footer')
+    <!-- FOOTER CLOSED -->
+</div>
+
+<!-- BACK-TO-TOP -->
+
+<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 @endsection
