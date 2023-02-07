@@ -72,7 +72,7 @@
                                                         <th class="text-center">#</th>
                                                         <th class="text-center">Nama</th>
                                                         <th class="text-center">Email</th>
-                                                        <th class="text-center">Role</th>
+                                                        {{-- <th class="text-center">Role</th> --}}
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -84,7 +84,7 @@
                                                             <td class="text-nowrap align-middle">{{ $loop->iteration }}</td>
                                                             <td class="text-nowrap align-middle">{{ $ulang->name }}</td>
                                                             <td class="text-center align-middle">{{ $ulang->email }}</td>
-                                                            <td class="text-center align-middle">{{ $ulang->is_admin }}</td>
+                                                            {{-- <td class="text-center align-middle">{{ $ulang->is_admin }}</td> --}}
                                                             <td class="text-center ">
                                                                 <form action="/user/{{ $ulang->id }}" method="POST">
                                                                     @method('delete')

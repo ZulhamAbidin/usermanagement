@@ -56,6 +56,8 @@
                     </ul>
                 </li>
 
+                @can('admin')
+
                 <li class="sub-category">
                     <h3>Management Users</h3>
                 </li>
@@ -71,6 +73,10 @@
                             class="side-menu__icon fe fe-user-plus"></i>
                         <span class="side-menu__label">Create Account</span></a>
                 </li>
+
+                @endcan
+
+
 
                 <li class="sub-category">
                     <h3>General</h3>

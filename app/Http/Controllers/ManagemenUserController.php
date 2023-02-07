@@ -8,8 +8,6 @@ class ManagemenUserController extends Controller
 {
     public function index() /* menampilkan data */
     {
-       
-
         $user = User::latest();
 
         if(request('search')){

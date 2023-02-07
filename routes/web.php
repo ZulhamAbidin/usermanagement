@@ -27,7 +27,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
-    ->middleware(['auth', 'admin', 'verified'])
+    ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -40,28 +40,28 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware('admin')->group(function () {});
+Route::middleware('admin')->group(function () {
+    Route::resource('data', DataController::class);
+    Route::post('delete-data', [DataController::class, 'destroy']);
 
-Route::resource('data', DataController::class);
-Route::post('delete-data', [DataController::class, 'destroy']);
+    Route::resource('/user', ManagemenUserController::class);
 
-Route::resource('/user', ManagemenUserController::class);
+    //CETAK CUSTOM AJAX
+    Route::get('/cetak', [CetakController::class, 'index']);
 
-//CETAK CUSTOM AJAX
-Route::get('/cetak', [CetakController::class, 'index']);
+    // CETAK DATA PERTANGGAL
+    Route::get('/cetak/cetak-data-pekerja-form', [datacontroller::class, 'cetakForm'])->name('cetak-data-pekerja-form');
+    Route::get('/cetak/cetak-data-pertanggal/{tglawal}/{tglakhir}', [datacontroller::class, 'cetakPekerjaPertanggal'])->name('cetak-data-pertanggal');
 
-// CETAK DATA PERTANGGAL
-Route::get('/cetak/cetak-data-pekerja-form', [datacontroller::class, 'cetakForm'])->name('cetak-data-pekerja-form');
-Route::get('/cetak/cetak-data-pertanggal/{tglawal}/{tglakhir}', [datacontroller::class, 'cetakPekerjaPertanggal'])->name('cetak-data-pertanggal');
+    // DOCUMENT SHOW DOWNLOAD ADD
+    Route::get('/document/index', [documentcontroller::class, 'uploaddocument']);
+    Route::post('/document', [documentcontroller::class, 'store']);
+    Route::get('/document/show', [documentcontroller::class, 'show']);
+    Route::get('/document/download/{file}', [documentcontroller::class, 'download']);
 
-// DOCUMENT SHOW DOWNLOAD ADD
-Route::get('/document/index', [documentcontroller::class, 'uploaddocument']);
-Route::post('/document', [documentcontroller::class, 'store']);
-Route::get('/document/show', [documentcontroller::class, 'show']);
-Route::get('/document/download/{file}', [documentcontroller::class, 'download']);
-
-Route::get('/document/show/{id}', [documentcontroller::class, 'delete']);
-Route::get('/document/view/{is}', [documentcontroller::class, 'view']);
+    Route::get('/document/show/{id}', [documentcontroller::class, 'delete']);
+    Route::get('/document/view/{is}', [documentcontroller::class, 'view']);
+});
 
 Route::get('/countries-list', [CountriesController::class, 'index'])->name('countries.list');
 Route::post('/add-country', [CountriesController::class, 'addCountry'])->name('add.country');
@@ -70,7 +70,5 @@ Route::post('/getCountryDetails', [CountriesController::class, 'getCountryDetail
 Route::post('/updateCountryDetails', [CountriesController::class, 'updateCountryDetails'])->name('update.country.details');
 Route::post('/deleteCountry', [CountriesController::class, 'deleteCountry'])->name('delete.country');
 Route::post('/deleteSelectedCountries', [CountriesController::class, 'deleteSelectedCountries'])->name('delete.selected.countries');
-
-
 
 Route::resource('/pencaker', PencakerController::class);
