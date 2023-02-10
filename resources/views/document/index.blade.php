@@ -23,6 +23,7 @@
                         <!-- PAGE-HEADER -->
                         <div class="page-header">
                             <h1 class="page-title">E-Document</h1>
+                            
                             <div>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0)">Document</a></li>
@@ -36,9 +37,11 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
+
                                     <div class="card-header">
                                         <div class="card-title">Upload New Document</div>
                                     </div>
+
                                     <form action="{{ url('document/') }}" method="post" enctype="multipart/form-data">
 
                                         @csrf
@@ -48,14 +51,14 @@
                                                 <label class="col-md-3 form-label">Nama Document :</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="nama" class="form-control"
-                                                        placeholder="Nama Document">
+                                                        placeholder="Nama Document" required>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
                                                 <label class="col-md-3 form-label">Deskripsi Document :</label>
                                                 <div class="col-md-9">
                                                     <input type="text" name="description" class="form-control"
-                                                        placeholder="Deskripsi Document">
+                                                        placeholder="Deskripsi Document" required>
                                                 </div>
                                             </div>
 
@@ -63,7 +66,7 @@
                                             <div class="row">
                                                 <label class="col-md-3 form-label mb-4">Unggah Document</label>
                                                 <div class="col-md-9">
-                                                    <input id="" type="file" name="file">
+                                                    <input id="" type="file" name="file" required>
                                                 </div>
                                             </div>
                                             <!--End Row-->

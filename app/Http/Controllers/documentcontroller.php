@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Stroge;
 use App\Models\document;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class documentcontroller extends Controller
 {
@@ -22,7 +24,8 @@ class documentcontroller extends Controller
         $data->nama = $request->nama;
         $data->description = $request->description;
         $data->save();
-        return redirect('/document/show')->with('success', 'Document Berhasil Disimpan');
+        Alert::success('Berhasil', 'Dokumen Berhasil Disimpan');
+        return redirect('/document/show');
     }
 
     public function show(Request $request)
@@ -57,7 +60,6 @@ class documentcontroller extends Controller
     public function view($id)
     {
         $data = document::find($id);
-
         return view('/document/view', compact('data'));
     }
 
@@ -65,6 +67,7 @@ class documentcontroller extends Controller
     {
         $data = document::find($id);
         $data->delete();
-        return redirect('document/show/')->with('succes', 'Data Berhasil Dihapus');
+        Alert::success('Berhasil', 'Document Berhasil Dihapus');
+        return redirect('document/show/')->with('successs', 'Data Berhasil Dihapus');
     }
 }

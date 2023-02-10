@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ManagemenUserController extends Controller
 {
@@ -37,7 +38,6 @@ class ManagemenUserController extends Controller
         User::create($validatedData);
 
         // $request->session()->flash('success', 'Registration successfully!');
-
         return redirect('/user/index')->with('success', 'Berhasil Mendaftarkan User Baru!');
     }
     
@@ -45,7 +45,7 @@ class ManagemenUserController extends Controller
      public function destroy(User $user) // delete
     {
         User::destroy($user->id);
-
-        return redirect('/user')->with('success', 'user Berhasil Dihapus');
+        Alert::success('Berhasil', 'Berhasil Menghapus User');
+        return redirect('/user')->with('successs', 'user Berhasil Dihapus');
     }
 }

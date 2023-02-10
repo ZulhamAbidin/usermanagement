@@ -23,7 +23,7 @@
                         <div class="page-header">
                             <h1 class="page-title">User List</h1>
 
-                                @if (session()->has('success'))
+                                {{-- @if (session()->has('success'))
                                 <div class="alert alert-primary alert-dismissible show flex items-center mb-2" role="alert">
                                     <i data-lucide="alert-circle" class="w-6 h-6 mr-2"></i>
                                     {{ session('success') }}
@@ -31,7 +31,9 @@
                                         <i data-lucide="x" class="w-4 h-4"></i>
                                     </button>
                                 </div>
-                                @endif
+                                @endif --}}
+
+                                @include('sweetalert::alert')
 
                             <div>
                                 <ol class="breadcrumb">

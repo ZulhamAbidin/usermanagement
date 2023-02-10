@@ -187,6 +187,7 @@ return [
          */
          Yajra\Datatables\DatatablesServiceProvider::class,
          Yajra\DataTables\ButtonsServiceProvider::class,
+         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,8 +214,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
          'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];
