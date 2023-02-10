@@ -66,16 +66,6 @@
                                             </div>
 
                                             <div class="row mb-4">
-                                                <label class="col-md-3 form-label">Role :</label>
-                                                <div class="col-md-9">
-                                                    <select name="is_admin" class="form-control form-select select2" data-bs-placeholder="Select Role">
-                                                       <option value="1">Super User</option>
-                                                    <option value="0" selected>User Admin</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4">
                                                 <label class="col-md-3 form-label"> Password :</label>
                                                 <div class="col-md-9">
                                                     <input type="password" id="password" class="form-control" placeholder="Password"
