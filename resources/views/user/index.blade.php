@@ -80,15 +80,15 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    @foreach ($user as $ulang)
+                                                    @foreach ($users as $user)
 
                                                         <tr>
                                                             <td class="text-nowrap align-middle">{{ $loop->iteration }}</td>
-                                                            <td class="text-nowrap align-middle">{{ $ulang->name }}</td>
-                                                            <td class="text-center align-middle">{{ $ulang->email }}</td>
-                                                            {{-- <td class="text-center align-middle">{{ $ulang->is_admin }}</td> --}}
+                                                            <td class="text-nowrap align-middle">{{ $user->name }}</td>
+                                                            <td class="text-center align-middle">{{ $user->email }}</td>
+                                                            {{-- <td class="text-center align-middle">{{ $user->is_admin }}</td> --}}
                                                             <td class="text-center ">
-                                                                <form action="/user/{{ $ulang->id }}" method="POST">
+                                                                <form action="/user/{{ $user->id }}" method="POST">
                                                                     @method('delete')
                                                                     @csrf
                                                                     <button onclick="return confirm('Are you sure ?')" class="btn btn-danger" href="javascript:;" data-tw-toggle="modal"
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="mb-5">
                                     <ul class=" float-end">
-                                        {{ $user->links() }}
+                                        {{ $users->links() }}
                                     </ul>
                                 </div>
                             </div>

@@ -4,24 +4,22 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class ManagemenUserController extends Controller
 {
-    public function index() /* menampilkan data */
+    public function index()
     {
-        $user = User::latest();
+        $users = DB::table('users')->where('is_admin', 0);
 
-        if(request('search')){
-            $user->where('name', 'like', '%' . request('search') . '%')
+        if (request('search')) {
+            $users->where('name', 'like', '%' . request('search') . '%')
             ->orWhere('email', 'like', '%' . request('search') . '%')
-             ->orderBy('id', 'desc');
+            ->orderBy('id', 'desc');
         }
 
-        return view('user.index', [
-           "user" => $user->paginate(5)
-        ]);
-
-
+        $users = $users->paginate(5);
+        return view('user.index', compact('users'));
     }
 
      public function store(Request $request)
