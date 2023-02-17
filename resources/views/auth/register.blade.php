@@ -68,37 +68,36 @@
                                             <div class="row mb-4">
                                                 <label class="col-md-3 form-label"> Password :</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="password" class="form-control" placeholder="Password"
-                                                        name="password" :value="old('password')" required autofocus />
+                                                    <input type="password" id="password" class="form-control" placeholder="Password"name="password" :value="old('password')" required autofocus />
                                                 </div>
                                             </div>
 
                                             <div class="row mb-4">
-                                                <label class="col-md-3 form-label"> password confirmation :</label>
+                                                <label class="col-md-3 form-label"> Password Confirmation :</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="password_confirmation" class="form-control" placeholder="password_confirmation"
-                                                        name="password_confirmation" :value="old('password_confirmation')" required autofocus />
+                                                    <input type="password" id="password_confirmation" class="form-control" placeholder="password confirmation" name="password_confirmation" :value="old('password_confirmation')" required autofocus />
                                                 </div>
                                             </div>
 
-                                            
+                                            <div class="row mb-4">
+                                                <label class="col-md-3 form-label"> Role :</label>
+                                                <div class="col-md-9">
+                                                    <select name="is_admin" id="is_admin" class="form-control" required>
+                                                        <option value="0">Admin</option>
+                                                        <option value="1">Administrator</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                                            <!--Row-->
-
-                                            <!--End Row-->
                                         </div>
 
-
                                         <div class="card-footer">
-                                            <!--Row-->
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <button type="submit" class="btn btn-primary float-end">Upload</button>
                                                 </div>
                                             </div>
-                                            <!--End Row-->
                                         </div>
-
                                     </form>
                                 </div>
                             </div>

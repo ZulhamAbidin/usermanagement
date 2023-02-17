@@ -22,6 +22,8 @@ class ManagemenUserController extends Controller
         return view('user.index', compact('users'));
     }
 
+    
+
      public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -38,7 +40,8 @@ class ManagemenUserController extends Controller
         // $request->session()->flash('success', 'Registration successfully!');
         return redirect('/user/index')->with('success', 'Berhasil Mendaftarkan User Baru!');
     }
-    
+
+
 
      public function destroy(User $user) // delete
     {

@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
+        
         // return redirect(RouteServiceProvider::HOME)->with('success', 'Berhasil Mendaftarkan User Baru!');
         Alert::success('Berhasil', 'Berhasil Mendaftarkan User Baru!');
         return redirect('/user');
